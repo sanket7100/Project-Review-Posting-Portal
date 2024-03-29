@@ -1,0 +1,7 @@
+ngb-rating{
+  cursor: pointer;
+  font-size: 24px; /* Adjust size as needed */
+  color: #FFD700;
+  /* border: 1px solid #ccc; Border color */
+  padding: 2px; /* Adjust padding as needed */
+}

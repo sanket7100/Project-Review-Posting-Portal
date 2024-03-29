@@ -1,0 +1,145 @@
+<div *ngIf="!showreviewform" class="px-6 py-4 flex justify-between items-start border-gray-200"
+    style="background-image: url(assets/images/bg-img.jpg);">
+    <button class="btn" (click)="back()"><mat-icon>arrow_back</mat-icon></button>
+</div>
+
+<div *ngIf="showreviewform" class="px-6 py-4 flex justify-between items-start border-gray-200"
+    style="background-image: url(assets/images/bg-img.jpg);">
+    <button class="btn" (click)="backfromReviewForm()"><mat-icon>arrow_back</mat-icon></button>
+</div>
+
+
+<!-- Selected Card -->
+<!-- <div *ngIf="!showreviewform && !showreplyform" class="h-screen w-full grid justify-center items-center"
+    style="background-image: url(assets/images/bg-img.jpg);">
+    <div class="w-lg mx-auto rounded-xl bg-slate-200 shadow-md overflow-hidden md:max-w-2xl">
+        <div class="md:flex">
+            <div class="md:flex-shrink-0">
+                <img class="h-48 w-full object-cover md:w-48" [src]="item.image" alt="Placeholder">
+            </div>
+            <div class="p-8">
+                <div class="uppercase tracking-wide w-fit text-indigo-500 text-lg font-bold inline-block">
+                    {{item.itemname}}
+                    <div class="star-rating">
+                        <ngb-rating [max]="5" [rate]="item.averageRating" [readonly]="true"></ngb-rating>
+                    </div>
+                </div>
+                <p class="block mt-1 text-sm leading-tight font-medium text-black">{{item.itemdescription}}</p>
+                <div class="px-6 py-4 flex justify-between items-start border-b border-gray-200">
+                    <button class="btn" (click)="openReview()">addReview</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+<!-- Selected Card -->
+<div *ngIf="!showreviewform && !showreplyform" class="w-full h-full flex items-center justify-center" style="background-image: url(assets/images/bg-img.jpg);">
+    <div class="max-w-sm overflow-hidden shadow shadow-black p-4 opacity-75 hover:scale-105">
+        <div class="bg-gray-100">
+            <!-- <div class="h-full w-1/3 bg-white flex-shrink-0">
+                <img class="h-full w-full object-cover object-center" [src]="item.image" alt="Card Image">
+            </div> -->
+            <div class="shadow shadow-black">
+                <img class="w-full h-64 object-fill shadow-lg" [src]="item.image" alt="Item Image">
+            </div>
+            
+            <div class="px-6 py-4">
+                <div class="text-blue-500 text-center underline font-bold text-2xl mb-4"><span>{{item.itemname}}</span></div>
+                <p class="text-black text-base mb-2">Category: <span class="font-bold">{{item.itemcategory}}</span></p>
+                <p class="text-black text-base mb-2">Created Date: <span class="font-bold">{{item.creationtime | slice:0:10}}</span></p>
+                <div class="flex items-center mb-2">
+                    <p class="text-base">Average Rating: <span class="font-bold"><ngb-rating [max]="5" [rate]="item.averageRating" [readonly]="true"></ngb-rating>({{item.averageRating | number:'1.0-2'}})</span></p>
+                </div>
+                <p>Total Reviews : <span class="font-bold">{{item.totalReviews}}</span></p>
+            </div>
+            <div class="px-6 py-4 border-b border-gray-200">
+                <button class="btn w-full" (click)="openReviewForm()">addReview</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Review Form -->
+<div *ngIf="showreviewform && !showreplyform" class="bg-gray-100 h-screen flex items-center justify-center" style="background-image: url(assets/images/bg-img.jpg);">
+    <div class="max-w-md w-full bg-white p-8 rounded shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Write a Review</h2>
+        <div>
+
+            <div class="mb-4">
+                <label for="review" class="block text-gray-700 font-bold mb-2">Review</label>
+                <textarea id="review" name="review" rows="4" placeholder="write about product here...."
+                    class="w-full border rounded-md py-2 px-3 text-gray-700 shadow shadow-black focus:outline-none focus:border-blue-500"
+                    [(ngModel)]="review"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="rating" class="block text-gray-700 font-bold mb-2">Rating</label>
+                <div class="star-rating">
+                    <ngb-rating class="text-4xl" [max]="5" [(rate)]="rating"></ngb-rating>
+                </div>
+            </div>
+            <button type="button" (click)="addReview()"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add
+                Review</button>
+        </div>
+    </div>
+</div>
+
+<!-- Reply Form -->
+<div *ngIf="!showreviewform && showreplyform" class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-8 rounded shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Write a Reply</h2>
+        <div>
+
+            <div class="mb-4">
+                <label for="review" class="block text-gray-700 font-bold mb-2">Reply</label>
+                <textarea id="review" name="review" rows="4" placeholder="write about product here...."
+                    class="w-full border rounded-md py-2 px-3 text-gray-700 focus:outline-none focus:border-blue-500"
+                    [(ngModel)]="reply"></textarea>
+            </div>
+            <button type="button" (click)="addReply()"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add
+                Reply</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Reviews And Replies -->
+<div *ngIf="!showreviewform && !showreplyform" class="bg-blue-100 gradient-bg">
+    <h1 class="text-2xl text-black font-mono p-4 underline">Reviews For Item</h1>
+    <div class="container mx-auto py-8">
+        <!-- Review Section -->
+        <div class="w-4/5 mx-auto pb-4">
+            <!--Review -->
+            <div *ngFor="let review of reviews" class="bg-white rounded-lg shadow-md mb-2 comment-container">
+                <div class="p-4">
+                    <div class="flex items-center mb-2">
+                        <img src="assets/images/user.jpg" alt="User" class="h-8 w-8 rounded-full mr-2">
+                        <h2 class="text-gray-800 text-lg font-semibold">{{review.fk_username}}</h2>
+                    </div>
+                    <div class="star-rating">
+                        <ngb-rating [max]="5" [(rate)]="review.rating" [readonly]="true"></ngb-rating>
+                    </div>
+                    <p class="text-black">{{review.review}}</p>
+                    <button class="pt-2 text-blue-500 font-sans font-semibold hover:underline" (click)="openReplyform(review)">Reply</button>
+                </div>
+                <!-- Replies Section -->
+                <div class="pb-4">
+                    <div *ngFor="let reply of review.comments;" class="bg-gray-100 px-4 py-2 reply-container"> <!-- Adjusted class -->
+                        <!-- Reply -->
+                        <div class="flex items-center mb-2">
+                            <img src="assets/images/user.jpg" alt="User" class="h-6 w-6 rounded-full mr-2">
+                            <h2 class="text-gray-800 text-base font-semibold">{{reply.username}}</h2>
+                        </div>
+                        <p class="text-black">{{reply.reply}}</p>
+    
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

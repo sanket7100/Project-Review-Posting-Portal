@@ -1,0 +1,11 @@
+ngb-rating{
+  cursor: pointer;
+  font-size: 24px; /* Adjust size as needed */
+  color: #FFD700;
+  /* border: 1px solid #ccc; Border color */
+  padding: 2px; /* Adjust padding as needed */
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #667eea 10%, #764ba2 100%);
+}

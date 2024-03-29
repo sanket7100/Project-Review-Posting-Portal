@@ -1,0 +1,44 @@
+<div *ngIf="signup" class="bg-gray-200 flex justify-center items-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-80">
+        <h2 class="text-2xl font-semibold mb-4">Sign Up</h2>
+        <div>
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 font-semibold mb-2">Username</label>
+                <input type="text" id="username" placeholder="Enter Username..." name="username" [(ngModel)]="username"
+                    class="w-full border border-gray-300 px-3 py-2 rounded-sm focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter Email..." [(ngModel)]="email"
+                    class="w-full border border-gray-300 px-3 py-2 rounded-sm focus:border-blue-500">
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password..."
+                    [(ngModel)]="password"
+                    class="w-full border border-gray-300 px-3 py-2 rounded-sm focus:border-blue-500">
+            </div>
+            <button
+                class="bg-blue-500 text-white font-semibold px-4 py-2 w-full rounded-sm hover:bg-blue-600 focus:bg-blue-600"
+                (click)="addUser()">
+                Sign Up
+            </button>
+        </div>
+        <div class="mt-4 text-center">
+            <p class="text-gray-700">Already have an account? <button
+                    class="text-blue-500 font-semibold hover:underline" (click)="gotologin()">Sign in</button></p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="userAdded && !signup" class="bg-gray-300 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-2xl font-semibold mb-4">User Added Succesfully....</h1>
+    </div>
+</div>
+
+<div *ngIf="!userAdded && !signup" class="bg-gray-300 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-2xl font-semibold mb-4">Try After Some Time....</h1>
+    </div>
+</div>

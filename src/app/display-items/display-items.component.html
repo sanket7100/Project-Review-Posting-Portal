@@ -1,0 +1,44 @@
+<div *ngIf="show" style="background-image: url('../../assets/images/notfound.jpg')"
+    class="bg-cover bg-center w-full h-screen">
+    <!-- not found img -->
+</div>
+<div *ngIf="!show" id="body"
+    class="bg-black grid md:grid-cols-2 grid-cols-1 gap-4 p-4 m-auto bg-cover bg-center bg-no-repeat bodycontainer">
+
+    <div *ngFor="let item of items; let i = index;"
+        class="mx-auto bg-slate-200 rounded-lg overflow-hidden relative flex-row w-full transform transition-transform duration-50 hover:scale-110 hover:z-10 hover:shadow-xl hover:shadow-slate-600 bg-opacity-85 card"
+        [class.blurred]="hoveredIndex !== null && hoveredIndex !== i" (mouseenter)="hoveredIndex = i"
+        (mouseleave)="hoveredIndex = null">
+        <!-- <div class="flex overflow-hidden"> -->
+            <!-- Left half -->
+            <div class="h-full w-1/3 bg-white flex-shrink-0">
+                <img class="h-full w-full object-cover object-center" [src]="item.image" alt="Card Image">
+            </div>
+
+            <!-- Right half -->
+            <div class="p-3 relative overflow-hidden">
+
+                <h2 class="text-xl font-semibold max-w-fit text-gray-800">{{ item.itemname }}</h2>
+
+                <p class="mt-2 text-black max-w-fit font-serif">"{{ item.itemdescription | slice:0:50 }}"</p>
+
+                <div class="star-rating">
+                    <ngb-rating [max]="5" [rate]="item.averageRating" [readonly]="true"></ngb-rating>
+                    <span class="text-black text-sm">({{item.averageRating | number : '1.0-2'}})</span>
+                </div>
+
+                <!-- <div class="star-rating">
+                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                        <span class="star"
+                            [ngClass]="{'filled': star <= item.averageRating, 'empty': star > item.averageRating}"></span>
+                    </ng-container>
+                </div> -->
+
+
+                <!-- Read More button -->
+                <button class="mt-4 text-blue-600 hover:text-blue-800 hover:underline" (click)="selectedItem(item)">Read More</button>
+            </div>
+        <!-- </div> -->
+
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- <div class="max-w-sm rounded overflow-hidden shadow-2xl">
+    <div>
+        <img class="w-full h-64 object-cover" src="assets/images/book.png" alt="Item Image">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">Item Name</div>
+            <p class="text-base mb-2">Category: Category Name</p>
+            <p class="text-base mb-2">Created Date: January 1, 2024</p>
+            <div class="flex items-center mb-2">
+                <p class="text-base">Average Rating: 4.5</p>
+            </div>
+            <p>Total Reviews : 100</p>
+        </div>
+    </div>
+    
+</div> -->
+<div class="p-4" style="background-image: url(assets/images/bg-img.jpg);">
+    <button class="btn" (click)="back()">back</button>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center items-center" style="background-image: url(assets/images/bg-img.jpg);">
+    <div *ngFor="let item of items" class="overflow-hidden shadow shadow-black p-4 opacity-75 hover:scale-105">
+        <div class="bg-gray-100">
+            <img class="w-full h-64 object-cover shadow-lg" [src]="item.image" alt="Item Image">
+            <div class="px-6 py-4">
+                <div class="text-blue-500 text-center underline font-bold text-2xl mb-4"><span>{{item.itemname}}</span></div>
+                <p class="text-black text-base mb-2">Category: <span class="font-bold">{{item.itemcategory}}</span></p>
+                <p class="text-black text-base mb-2">Created Date: <span class="font-bold">{{item.creationtime | slice:0:10}}</span></p>
+                <div class="flex items-center mb-2">
+                    <p class="text-base">Average Rating: <span class="font-bold"><ngb-rating [max]="5" [rate]="item.averageRating" [readonly]="true"></ngb-rating>({{item.averageRating | number : '1.0-2'}})</span></p>
+                </div>
+                <p>Total Reviews : <span class="font-bold">{{item.totalReviews}}</span></p>
+            </div>
+        </div>
+        
+    </div>
+</div>

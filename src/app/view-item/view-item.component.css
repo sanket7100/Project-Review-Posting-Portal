@@ -1,0 +1,29 @@
+.star-rating {
+  display: block;
+  font-size: 24px; /* Adjust size as needed */
+  color: #FFD700; /* Color of filled stars */
+}
+
+ngb-rating{
+  cursor: pointer;
+  font-size: 28px; /* Adjust size as needed */
+  color: #FFD700;
+  /* border: 1px solid #ccc; Border color */
+  padding: 2px; /* Adjust padding as needed */
+}
+
+.comment-container {
+  background-color: #F3F4F6; /* Light gray for comments */
+}
+
+.reply-container {
+  background-color: #E5E7EB; /* Lighter gray for replies */
+  margin-left: 2rem; /* Adjust the indentation */
+  margin-right: 2rem; 
+  border-left: 2px solid #cbd5e0; /* Add a left border for indentation effect */
+  padding-left: 1rem; /* Add padding for better spacing */
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}

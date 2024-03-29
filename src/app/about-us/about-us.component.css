@@ -1,0 +1,12 @@
+.gradient-bg {
+    background: linear-gradient(135deg, #667eea 10%, #764ba2 100%);
+}
+
+.body {
+    background: linear-gradient(135deg, #fcb045 0%, #fd1d1d 100%);
+}
+
+.founder-img {
+    width: 120px;
+    height: 120px;
+}

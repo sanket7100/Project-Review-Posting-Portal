@@ -1,0 +1,59 @@
+<div class="bg-gray-100 bg-cover bg-no-repeat bg-center relative rounded-sm">
+
+    <div class="fixed w-full h-20 z-10 bg-white text-white p-4" id="navbar"
+        [ngClass]="{'top-0': isNavbarVisible, '-top-full': !isNavbarVisible}">
+        <div class="flex justify-between items-center">
+            <img src="../../assets/images/company-logo.png" alt="company-logo"
+                class="h-10 w-20 rounded-full hover:shadow-2xl  hover:shadow-black hover:scale-105">
+            <div class="flex items-center gap-4">
+                <button class="mx-2 text-black hover:text-gray-800 hover:font-bold" (click)="gotohome()">Home</button>
+                <button class="mx-2 text-black hover:text-gray-800 hover:font-bold" (click)="gotoAboutUsPage()">About
+                    us</button>
+                <button class="mx-2 text-black hover:text-gray-800 hover:font-bold" (click)="addItem()">Add
+                    Item</button>
+
+
+                <div class="" (click)="toggleDropdown()">
+                    <button class="flex items-center text-white mx-2">
+                        <span class="hover:text-gray-800 text-black hover:font-bold">SORT BY CATEGORY</span>
+                    </button>
+                    <div class="absolute bg-white text-white mt-2 w-32 rounded-md shadow-lg opacity-100 z-10"
+                        [ngClass]="{'hidden': !dropdown}">
+                        <button class="block px-4 py-2 text-black hover:font-semibold"
+                            (click)="gotoAllItems()">ALL</button>
+                        <button class="block px-4 py-2 text-black hover:font-semibold"
+                            (click)="gotoBooks()">BOOKS</button>
+                        <button class="block px-4 py-2 text-black hover:font-semibold"
+                            (click)="gotoMovies()">MOVIES</button>
+                        <button class="block px-4 py-2 text-black hover:font-semibold"
+                            (click)="gotoPlaces()">PLACES</button>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <input type="text"
+                        class="py-2 px-4 mr-2 bg-slate-200 rounded-l-md hover:scale-105 hover:border-black text-black"
+                        placeholder="Search By Name..." [(ngModel)]="itemname">
+                    <button
+                        class="p-1 m-auto bg-blue-500 text-white rounded-md hover:bg-blue-700 hover:text-black hover:scale-105"
+                        (click)="searchItems()"><mat-icon>search</mat-icon></button>
+                </div>
+                <div>
+                    <button *ngIf="!logged" class="btn hover:scale-105" (click)="loginpage()">Login</button>
+                    <button *ngIf="logged" class="text-black h-10 w-10 rounded-lg hover:scale-105"
+                        (click)="profile()"><img src="assets/images/user.jpg" alt="img"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="body-content">
+        <div class="h-20"></div>
+        <div class="">
+            <router-outlet></router-outlet>
+            <!-- <app-display-items></app-display-items> -->
+        </div>
+
+    </div>
+</div>
